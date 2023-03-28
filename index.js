@@ -10,7 +10,7 @@ server.listen(7000, () => {
 
 server.get("/api/user", db.getUsers);
 // server.get("/carro/:id", db.getCarroById);
-// server.post("/carro", db.createCarro);
+server.post("/api/user", db.createUser);
 // server.put("/carro/:id", db.updateCarro);
 // server.delete("/carro/:id", db.deleteCarro);
 

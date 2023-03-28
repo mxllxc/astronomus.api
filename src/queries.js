@@ -27,20 +27,20 @@ const getUsers = (request, response) => {
 //   });
 // };
 
-// const createCarro = (request, response) => {
-//   const { categoria, marca, modelo, nome, ano, valor, loja } = request.body;
+const createUser = (request, response) => {
+  const { email, name, password } = request.body;
 
-//   pool.query(
-//     "INSERT INTO carros (categoria, marca, modelo, nome, ano, valor, loja) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-//     [categoria, marca, modelo, nome, ano, valor, loja],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//       response.status(201).send(`Carro added with ID: ${results.insertId}`);
-//     }
-//   );
-// };
+  pool.query(
+    "INSERT INTO users (email, name, password) VALUES ($1, $2, $3)",
+    [email, name, password],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(201).send("User added!");
+    }
+  );
+};
 
 // const updateCarro = (request, response) => {
 //   const id = parseInt(request.params.id);
@@ -72,7 +72,7 @@ const getUsers = (request, response) => {
 module.exports = {
   getUsers,
   //   getCarroById,
-  //   createCarro,
+  createUser,
   //   updateCarro,
   //   deleteCarro,
 };
