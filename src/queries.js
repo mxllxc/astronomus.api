@@ -28,16 +28,16 @@ const getUsers = (request, response) => {
 // };
 
 const createUser = (request, response) => {
-  const { email, name, password } = request.body;
+  const { email, name, password } = request.body.data;
 
   pool.query(
     "INSERT INTO users (email, name, password) VALUES ($1, $2, $3)",
     [email, name, password],
     (error, results) => {
       if (error) {
-        throw error;
+        response.status(404).send({ message: "Error when registring user!" });
       }
-      response.status(201).send("User added!");
+      response.status(201).send({ message: `${name} successfully registred!` });
     }
   );
 };
