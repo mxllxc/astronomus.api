@@ -1,7 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const server = express();
 const db = require("./src/queries");
 
+server.use(cors());
 server.use(express.json());
 
 server.listen(7000, () => {
